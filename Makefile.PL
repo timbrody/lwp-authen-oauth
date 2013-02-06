@@ -17,4 +17,11 @@ WriteMakefile(
       (ABSTRACT_FROM  => 'lib/LWP/Authen/OAuth.pm', # retrieve abstract from module
        AUTHOR         => 'Timothy D Brody <tdb2@ecs.soton.ac.uk>') : ()),
 	dist              => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+	META_MERGE => {
+		resources         => {
+			url     =>  'git://github.com/timbrody/lwp-authen-oauth.git',
+			web     =>  'https://github.com/timbrody/lwp-authen-oauth',
+			type    =>  'git',
+		},
+	}
 );

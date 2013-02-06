@@ -170,7 +170,7 @@ use URI::Escape;
 use Digest::SHA;
 use MIME::Base64;
 
-$VERSION = '1.01';
+$VERSION = '1.02';
 @ISA = qw( LWP::UserAgent );
 
 use strict;
@@ -179,11 +179,17 @@ sub new
 {
 	my( $class, %self ) = @_;
 
-	my $self = $class->SUPER::new( %self );
-
+	my %opts;
 	for(qw( oauth_consumer_key oauth_consumer_secret oauth_token oauth_token_secret ))
 	{
-		$self->{$_} = $self{$_};
+		$opts{$_} = delete $self{$_};
+	}
+
+	my $self = $class->SUPER::new( %self );
+
+	for(keys %opts)
+	{
+		$self->{$_} = $opts{$_};
 	}
 
 	return $self;
