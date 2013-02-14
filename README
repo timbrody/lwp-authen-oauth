@@ -24,6 +24,10 @@ This module requires these other modules and libraries:
   URI
   URI::Escape
 
+CODE REPOSITORY
+
+git clone git://github.com/timbrody/lwp-authen-oauth.git
+
 COPYRIGHT AND LICENCE
 
 Timothy D Brody <tdb2@ecs.soton.ac.uk>

@@ -170,7 +170,7 @@ use URI::Escape;
 use Digest::SHA;
 use MIME::Base64;
 
-$VERSION = '1.02';
+$VERSION = '1.03';
 @ISA = qw( LWP::UserAgent );
 
 use strict;
