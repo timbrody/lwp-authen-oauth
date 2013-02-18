@@ -282,6 +282,26 @@ sub sign_hmac_sha1
 
 	# HTTP OAuth Authorization parameters
 	my @auth_params = oauth_authorization_param( $request );
+
+	my %strip = map { $_ => 1 } qw(
+		oauth_timestamp
+		oauth_signature_method
+		oauth_signature
+	);
+
+	# strip the oauth settings we make
+	for(my $i = 0; $i < @auth_params;)
+	{
+		if (exists $strip{$auth_params[$i]})
+		{
+			splice(@auth_params,$i,2);
+		}
+		else
+		{
+			$i += 2;
+		}
+	}
+
 	my %auth_params = @auth_params;
 	if( !exists($auth_params{oauth_nonce}) )
 	{
